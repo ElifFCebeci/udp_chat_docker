@@ -1,13 +1,13 @@
-# Küçük boyutlu Go imajını kullan
+# Küçük boyutlu Go imajı
 FROM golang:1.20-alpine
 
-# Çalışma dizinini belirle
+# Çalışma dizini
 WORKDIR /app
 
-# Kod dosyasını kopyala
+# Kod dosyasını kopyalama
 COPY udp_client.go .
 
-# Go kodunu derle
+# Go kodunu derleme
 RUN go build -o udp_client udp_client.go
 
 # Çalıştırılacak komut
