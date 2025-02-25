@@ -1,0 +1,26 @@
+
+
+services:
+  udp_server:
+    build:
+      context: ./udp_server
+      dockerfile: Dockerfile
+    container_name: udp_server
+    ports:
+      - "12345:12345/udp"
+    networks:
+      - chat_network
+
+  udp_client:
+    build:
+      context: ./udp_client
+      dockerfile: Dockerfile
+    container_name: udp_client
+    depends_on:
+      - udp_server
+    networks:
+      - chat_network
+
+networks:
+  chat_network:
+    driver: bridge
